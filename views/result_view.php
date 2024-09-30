@@ -86,9 +86,9 @@
                             <?php if (empty($_GET['registration'])): ?>
                                 <p>MOT due in <strong>The MOT for this vehicle has expired 2060 days</strong></p>
                             <?php else: ?>
-                                <?php if ($interval->y < 3): ?>
+                                <?php if ($interval->y < 3 && $daysUntilMotExpiresForLessThan3years > 0): ?>
                                     <p>MOT due in <strong><?php echo floor((strtotime($data['motTestDueDate']) - time()) / (60 * 60 * 24)); ?> days</strong></p>
-                                <?php else: ?>
+                                <?php elseif ($daysUntilMotExpires > 0): ?>
                                     <p>MOT due in <strong><?php echo floor((strtotime($latestMOT['expiryDate']) - time()) / (60 * 60 * 24)); ?> days</strong></p>
                                 <?php endif; ?>
                             <?php endif; ?>
