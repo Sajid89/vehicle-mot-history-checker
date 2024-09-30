@@ -51,17 +51,9 @@
 
                             <p class="mb-0 label">
                                 <?php if ($interval->y < 3): ?>
-                                    <?php if ($daysUntilMotExpiresForLessThan3years < 0): ?>
-                                        MOT has expired
-                                    <?php else: ?>  
-                                        First MOT Due
-                                    <?php endif; ?>
+                                    First MOT Due
                                 <?php else: ?>
-                                    <?php if ($daysUntilMotExpires < 0): ?>
-                                        MOT has expired
-                                    <?php else: ?>  
-                                        MOT valid until
-                                    <?php endif; ?>
+                                    MOT valid until
                                 <?php endif; ?>
                             </p>
                             
@@ -69,13 +61,21 @@
                                 <h5 class="font-weight-bold">06 February 2019</h5>
                             <?php else: ?>
                                 <?php if ($interval->y < 3): ?>
-                                    <?php if ($daysUntilMotExpiresForLessThan3years > 0): ?>
+                                    <?php if ($daysUntilMotExpiresForLessThan3years < 0): ?>
+                                        <h5 class="font-weight-bold">
+                                            MOT has expired
+                                        </h5>
+                                    <?php else: ?>
                                         <h5 class="font-weight-bold">
                                             <?php echo date("d F Y", strtotime($data['motTestDueDate'])); ?>
                                         </h5>
                                     <?php endif; ?>
                                 <?php else: ?>
-                                    <?php if ($daysUntilMotExpires > 0): ?>
+                                    <?php if ($daysUntilMotExpires < 0): ?>
+                                        <h5 class="font-weight-bold">
+                                            MOT has expired
+                                        </h5>
+                                    <?php else: ?>
                                         <h5 class="font-weight-bold">
                                             <?php echo date("d F Y", strtotime($latestMOT['expiryDate'])); ?>
                                         </h5>
